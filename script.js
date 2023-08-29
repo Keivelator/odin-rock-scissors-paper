@@ -16,7 +16,9 @@ function getPlayerChoice () {
 }
 
 function playRound () {
+   
    getPlayerChoice();
+   computerSelection = getComputerChoice();
 
    if (playerSelection === 'rock') {
       if (computerSelection === 'rock') {
@@ -60,15 +62,27 @@ function playRound () {
 }
 
 function game () {
-   
+   for (i = 0; i < 5; i++) {
+      console.log(playRound());
+   }
+}
+
+function gameResult () {
+   if (playerScore > computerScore) {
+      console.log(`Congrats! You won the game!`);
+   } else if (playerScore < computerScore) {
+      console.log(`You lost the game.`);
+   } else if (playerScore === computerScore) {
+      console.log('Tie.');
+   } else {
+      console.log(`Something's wrong with the code.`)
+   }
 }
 
 let playerSelection = ' ';
-let computerSelection = getComputerChoice();
+let computerSelection = ' ';
 let playerScore = 0;
 let computerScore = 0;
 
-let gameResult = playRound();
-
-console.log(`player used ${playerSelection} and computer used ${computerSelection}`);
-console.log(gameResult);
+game();
+gameResult();
