@@ -11,31 +11,43 @@ function getComputerChoice () {
    }
 }
 
-function playRound (playerSelection, computerSelection) {
+function getPlayerChoice () {
+   playerSelection = prompt("rock, scissors, or paper?").toLowerCase();
+}
+
+function playRound () {
+   getPlayerChoice();
+
    if (playerSelection === 'rock') {
       if (computerSelection === 'rock') {
          return `Rock with rock. It's a tie!`;
       } else if (computerSelection === 'scissors') {
+         playerScore++;
          return `Rock beats scissors. You win!`;
       } else if (computerSelection === 'paper') {
+         computerScore++;
          return `Paper beats rock. You lose`;
       } else {
          return `Something's wrong with the code`
       }
    } else if (playerSelection === 'scissors') {
       if (computerSelection === 'rock') {
+         computerScore++;
          return `Rock beats scissors. You lose!`;
       } else if (computerSelection === 'scissors') {
          return `Scissors with scissors. It's a tie!`;
       } else if (computerSelection === 'paper') {
+         playerScore++;
          return `Scissors beats paper. You win!`;
       } else {
          return `Something's wrong with the code`
       }
    } else if (playerSelection === 'paper') {
       if (computerSelection === 'rock') {
+         playerScore++;
          return `Paper beats rock. You win!`;
       } else if (computerSelection === 'scissors') {
+         computerScore++;
          return `Scissors beats paper. You lose`;
       } else if (computerSelection === 'paper') {
          return `Paper with paper. It's a tie!`;
@@ -47,10 +59,16 @@ function playRound (playerSelection, computerSelection) {
    }
 }
 
-let playerSelection = 'Scissors'.toLowerCase();
-let computerSelection = getComputerChoice();
+function game () {
+   
+}
 
-let gameResult = playRound(playerSelection, computerSelection);
+let playerSelection = ' ';
+let computerSelection = getComputerChoice();
+let playerScore = 0;
+let computerScore = 0;
+
+let gameResult = playRound();
 
 console.log(`player used ${playerSelection} and computer used ${computerSelection}`);
 console.log(gameResult);
