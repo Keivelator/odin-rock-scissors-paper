@@ -11,13 +11,9 @@ function getComputerChoice () {
    }
 }
 
-function getPlayerChoice (playerChoice) {
-   playerSelection = playerChoice;
-}
-
 function playRound (playerChoice) {
    
-   getPlayerChoice(playerChoice);
+   playerSelection = playerChoice;
    computerSelection = getComputerChoice();
 
    if (playerSelection === 'rock') {
@@ -77,12 +73,9 @@ function gameResult () {
       resultScreen.textContent = `Congrats! You won the game!`;
    } else if (playerScore < computerScore) {
       resultScreen.textContent = `You lost the game.`;
-   } else if (playerScore === computerScore) {
-      resultScreen.textContent = 'Tie.';
    } else {
       resultScreen.textContent = `Something's wrong with the code.`;
-   }
-   
+   }   
 }
 
 let playerSelection = ' ';
