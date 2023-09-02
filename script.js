@@ -75,7 +75,10 @@ function gameResult () {
       resultScreen.textContent = `You lost the game.`;
    } else {
       resultScreen.textContent = `Something's wrong with the code.`;
-   }   
+   }
+
+   playerScore = 0;
+   computerScore = 0;
 }
 
 let playerSelection = ' ';
