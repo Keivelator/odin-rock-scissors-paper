@@ -61,24 +61,28 @@ function playRound (playerChoice) {
    }
 }
 
-// function game () {
-//    for (i = 0; i < 5; i++) {
-//       console.log(playRound());
-//    }
-// }
+function displayCurrentResult (resultText) {
+   const result = document.querySelector('.result');
+   result.textContent = resultText;
+}
+
+function displayCurrentScore () {
+   const currentScore = document.querySelector('.current-score');
+   currentScore.textContent = `player score is ${playerScore}, computer score is ${computerScore}`;
+}
 
 function gameResult () {
-   console.log('Computer scored ' + computerScore);
-   console.log('Player scored ' + playerScore);
+   const resultScreen = document.querySelector('.game-result');
    if (playerScore > computerScore) {
-      console.log(`Congrats! You won the game!`);
+      resultScreen.textContent = `Congrats! You won the game!`;
    } else if (playerScore < computerScore) {
-      console.log(`You lost the game.`);
+      resultScreen.textContent = `You lost the game.`;
    } else if (playerScore === computerScore) {
-      console.log('Tie.');
+      resultScreen.textContent = 'Tie.';
    } else {
-      console.log(`Something's wrong with the code.`)
+      resultScreen.textContent = `Something's wrong with the code.`;
    }
+   
 }
 
 let playerSelection = ' ';
@@ -86,13 +90,12 @@ let computerSelection = ' ';
 let playerScore = 0;
 let computerScore = 0;
 
-// game();
-// console.log(playRound());
-// gameResult();
-
 const buttons = document.querySelectorAll('button');
 buttons.forEach(button => {
    button.addEventListener('click', () => {
-      console.log(playRound(button.id));
+      const resultText = playRound(button.id);
+      displayCurrentResult(resultText);
+      displayCurrentScore();
+      if (playerScore === 5 || computerScore === 5) gameResult();
    });
 })
