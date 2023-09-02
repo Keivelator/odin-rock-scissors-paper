@@ -68,6 +68,8 @@ function game () {
 }
 
 function gameResult () {
+   console.log('Computer scored ' + computerScore);
+   console.log('Player scored ' + playerScore);
    if (playerScore > computerScore) {
       console.log(`Congrats! You won the game!`);
    } else if (playerScore < computerScore) {
